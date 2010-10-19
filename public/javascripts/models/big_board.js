@@ -10,10 +10,15 @@ var BigBoard = Backbone.Model.extend(function(){
 
 			// save initial properties
 			this.window = window;
-			this.set({ boardName: this.processHash(this.window.location.hash) });
+			this.updateBoardName();
 
 			//get set up
 			this.setupEventListeners();
+		},
+		
+		updateBoardName: function() {
+			this.set({ boardName: this.processHash(this.window.location.hash) });	
+			this.log("Updating board name to " + this.get('boardName'));
 		},
 		
 		processHash: function(boardNameWithHash) {
@@ -21,11 +26,11 @@ var BigBoard = Backbone.Model.extend(function(){
 		},
 		
 		setupEventListeners: function() {
-			$(this.window).bind("hashchange", this.hashChangeEventListener)
+			$(this.window).bind("hashchange", _.bind(this.hashChangeEventListener, this))
 		},
 		
 		hashChangeEventListener: function(event) {
-			console.log("HASH CHANGED!");
+			this.updateBoardName();
 		},
 		
 		log: function(str) {

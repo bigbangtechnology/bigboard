@@ -1,2 +1,11 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(document).ready(function(){
+	app.setup(window);
+	
+	//add the main view
+	$(document.body).html(appView.el);
+});
+
+var app = new BigBoard();
+var appView = new BigBoardView({
+	model: app
+});

@@ -19,12 +19,5 @@
 
   <script src="/scripts/client.js"></script>
 
-  <script>
-	$(document).ready(function(){
-		app.setup(window);
-	});
-	
-	var app = new BigBoard();
-  </script>
 
 </html>
