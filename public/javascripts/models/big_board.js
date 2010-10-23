@@ -41,7 +41,7 @@ var BigBoard = Backbone.Model.extend(function(){
 		},
 		
 		logout: function() {
-		  this.window.location.hash = null;
+		  this.window.location.hash = "";
 		},
 		
 		log: function(str) {
