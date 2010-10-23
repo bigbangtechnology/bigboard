@@ -17,8 +17,11 @@ var BigBoard = Backbone.Model.extend(function(){
 		},
 		
 		updateBoardName: function() {
-			this.set({ boardName: this.processHash(this.window.location.hash) });	
-			this.log("Updating board name to " + this.get('boardName'));
+		  var boardName = this.processHash(this.window.location.hash);
+		  		  		  
+		  this.log("Updating board name to " + boardName);
+		  
+			this.set({ boardName: boardName });	
 		},
 		
 		processHash: function(boardNameWithHash) {
