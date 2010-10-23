@@ -2,7 +2,7 @@ describe("Big Board View", function() {
   
   var app = new BigBoard();
   var sut;
-  
+
   beforeEach(function() {
     // before goes here
     sut = new BigBoardView({

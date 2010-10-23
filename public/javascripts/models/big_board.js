@@ -33,6 +33,10 @@ var BigBoard = Backbone.Model.extend(function(){
 			this.updateBoardName();
 		},
 		
+		loadBoard: function(boardName) {
+      this.window.location.hash = boardName;
+		},
+		
 		log: function(str) {
 			console.log(str);
 		}
