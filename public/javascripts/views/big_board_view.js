@@ -1,6 +1,7 @@
-var BigBoardView = Backbone.View.extend(function() {
-  
+var BigBoardView = Backbone.View.extend(function() {  
   //private
+  ENTER_KEY_CODE = 13;
+  
   var currentState, taskStore, taskStoreView;
   
   var transitions = {
@@ -34,7 +35,8 @@ var BigBoardView = Backbone.View.extend(function() {
   
     events: {
       "click .no_board_selected input[type=submit]" : "submitBoard",
-      "click .logout" : "logout"
+      "click .logout" : "logout",
+      "keypress input[type=text]" : "keyPressListener"
     },
 	
     initialize: function() {
@@ -100,6 +102,23 @@ var BigBoardView = Backbone.View.extend(function() {
     
     logout: function() {
       this.model.logout();
+    },
+    
+    keyPressListener: function(event) {
+      if (event.which == ENTER_KEY_CODE) {
+        this.createTask();
+      }
+    },
+    
+    createTask: function() {
+      var inputEl = this.$('input[type=text]');
+      var description = inputEl.val();
+      
+      taskStore.add({
+        description: description
+      });
+      
+      inputEl.val('');
     },
 
     log: function(str) {
