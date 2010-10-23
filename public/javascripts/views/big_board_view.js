@@ -36,7 +36,7 @@ var BigBoardView = Backbone.View.extend(function() {
     events: {
       "click .no_board_selected input[type=submit]" : "submitBoard",
       "click .logout" : "logout",
-      "keypress input[type=text]" : "keyPressListener"
+      "keypress .board_selected input[type=text]" : "keyPressListener"
     },
 	
     initialize: function() {
