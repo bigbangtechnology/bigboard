@@ -1,32 +1,31 @@
-var BigBoardView = Backbone.View.extend(function() {  
+var BigBoardView = Backbone.View.extend(Stately).extend(function() {  
   //private
   ENTER_KEY_CODE = 13;
   
-  var currentState, taskStore, taskStoreView;
-  
-  var transitions = {
-    "board_selected": {
-      "enter_state": function() {
-        taskStore = new TaskStore();
-        taskStoreView = new TaskStoreView({
-          model: taskStore
-        });
-
-        //add a fake task
-        taskStore.add([
-          { description: "A task" },
-          { description: "Another task" },
-          { description: "And yet another task" }
-        ]);
-      },
-    
-      "render_state": function() {
-        this.$('#taskStoreView').append(taskStoreView.el);
-      }          
-    }
-  }
+  var taskStore, taskStoreView;
   
   return {
+    transitions : {
+      "board_selected": {
+        "enter_state": function() {
+          taskStore = new TaskStore();
+          taskStoreView = new TaskStoreView({
+            model: taskStore
+          });
+
+          //add a fake task
+          taskStore.add([
+            { description: "A task" },
+            { description: "Another task" },
+            { description: "And yet another task" }
+          ]);
+        },
+
+        "render_state": function() {
+          this.$('#taskStoreView').append(taskStoreView.el);
+        }          
+      }
+    },    
     
     states: {
       NO_BOARD_SELECTED: "no_board_selected",
@@ -46,7 +45,7 @@ var BigBoardView = Backbone.View.extend(function() {
     render: function() {
       this.log("Rendering Big Board View");
       
-      this.updateState(function(){
+      this.revalidateState(function() {
         $(this.el).html(this.template(this.model.toJSON()));
       });          
     
@@ -55,44 +54,20 @@ var BigBoardView = Backbone.View.extend(function() {
       return this;
     },
     
-    updateState: function(callback) {	  
-      $(this.el).removeClass();
-  
+    getState: function() {
       var boardName = this.model.get('boardName');
       var state;
-  
+      
       if (boardName == undefined || boardName == null) {
-        currentState = this.states.NO_BOARD_SELECTED;        
+        return this.states.NO_BOARD_SELECTED;        
       } else {
-        currentState = this.states.BOARD_SELECTED;
+        return this.states.BOARD_SELECTED;
       }
       
-      $(this.el).addClass(currentState);
-      this.executeTransition("enter_state");
-      
-      if (callback instanceof Function) {
-        callback.call(this);
-      }
-      
-      this.executeTransition("render_state");
-    },
-    
-    executeTransition: function(transitionName) {
-      if (this.hasTransition(transitionName)) {
-        transitions[currentState][transitionName].call(this);
-      }
-    },
-    
-    hasTransition: function(transitionName) {
-      if (transitions.hasOwnProperty(currentState) && transitions[currentState].hasOwnProperty(transitionName)) {
-        return true;
-      } else {
-        return false;
-      }
     },
 
     template: function(json) {		
-    	return JST['application_' + currentState ](json);
+    	return JST['application_' + this.currentState ](json);
     },
   
     submitBoard: function() {
@@ -124,5 +99,5 @@ var BigBoardView = Backbone.View.extend(function() {
     log: function(str) {
     	console.log(str);
     }
-  }	
+  };	
 }());
