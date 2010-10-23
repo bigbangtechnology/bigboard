@@ -40,6 +40,10 @@ var BigBoard = Backbone.Model.extend(function(){
       this.window.location.hash = boardName;
 		},
 		
+		logout: function() {
+		  this.window.location.hash = null;
+		},
+		
 		log: function(str) {
 			console.log(str);
 		}

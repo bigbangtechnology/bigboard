@@ -33,7 +33,8 @@ var BigBoardView = Backbone.View.extend(function() {
     },
   
     events: {
-      "click .no_board_selected input[type=submit]" : "submitBoard"
+      "click .no_board_selected input[type=submit]" : "submitBoard",
+      "click .logout" : "logout"
     },
 	
     initialize: function() {
@@ -95,6 +96,10 @@ var BigBoardView = Backbone.View.extend(function() {
     submitBoard: function() {
       var boardName = this.$('input[type=text]').val();  
       this.model.loadBoard(boardName);
+    },
+    
+    logout: function() {
+      this.model.logout();
     },
 
     log: function(str) {
