@@ -6,8 +6,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
   
   return {
     transitions : {
-      "board_selected": {
-        "enter_state": function() {
+      board_selected: {
+        before_transition: function() {
           taskStore = new TaskStore();
           taskStoreView = new TaskStoreView({
             model: taskStore
@@ -21,7 +21,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           ]);
         },
 
-        "render_state": function() {
+        after_transition: function() {
           this.$('#taskStoreView').append(taskStoreView.el);
         }          
       }

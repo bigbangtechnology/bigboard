@@ -3,47 +3,15 @@
 //     For all details and documentation:
 //     http://bigbangtechnology.github.com/stately
 
-/**
-  Example:
-  var MyView = Backbone.View.extend(Stately).extend({
-    states: {
-      EDITING: "editing",
-      NORMAL: "normal"
-    },
-  
-    transitions: {
-      "editing": {
-        "enter_state": function() {
-          console.log("EDITING: enter_state");
-        },
-      
-        "render_state": function() {
-          console.log("EDITING: render_state");              
-        }
-      }
-    },
-  
-    render: function() {
-      this.revalidateState(function(){
-        // render the generic view here
-      });
-    },
-  
-    getState: function() {
-      if (this.currentState == this.states.EDITING) {
-        return this.states.NORMAL;
-      } else {
-        return this.states.EDITING;
-      }
-    }
-  });
-**/
-
 var Stately = function() {
   return {
     VERSION: "0.0.1",
     
     currentState: "",
+    
+    transitions: {
+      
+    },
 
     /**
       Revalidate state is a function that you call when you want to transition
@@ -62,13 +30,13 @@ var Stately = function() {
 
       $(this.el).addClass(this.currentState);
 
-      this.executeTransition("enter_state");
+      this.executeTransition("before_transition");
 
       if (callback instanceof Function) {
         callback.call(this);
       }
 
-      this.executeTransition("render_state");
+      this.executeTransition("after_transition");
     },
 
     /**
