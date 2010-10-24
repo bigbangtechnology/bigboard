@@ -5,7 +5,7 @@
 
 var Stately = function() {
   return {
-    VERSION: "0.0.1",
+    VERSION: "0.0.2",
     
     currentState: "",
     
@@ -19,8 +19,10 @@ var Stately = function() {
       which will execute once the state has been set but BEFORE the render_state function
       is called for the given state.
     **/    
-    revalidateState: function(callback) {	  
-      $(this.el).removeClass();
+    revalidateState: function(callback) {
+      if (this.currentState) {
+        $(this.el).removeClass(this.currentState);
+      }
 
       this.currentState = this.getState();
       
