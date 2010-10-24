@@ -22,5 +22,7 @@ Bigboard::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.couchdb_url = "http://127.0.0.1:5984"
 end
 

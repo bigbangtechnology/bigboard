@@ -603,6 +603,10 @@
   // * Persist models via WebSockets instead of Ajax.
   //
   Backbone.sync = function(method, model, success, error) {
+    
+    console.log("SYNCING");
+    console.log(methodMap[method]);
+    
     $.ajax({
       url       : getUrl(model),
       type      : methodMap[method],

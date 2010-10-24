@@ -43,6 +43,15 @@ GEM
       activesupport (~> 3.0.0)
     builder (2.1.2)
     closure-compiler (0.3.3)
+    couchrest (1.0.1)
+      json (>= 1.4.6)
+      mime-types (>= 1.15)
+      rest-client (>= 1.5.1)
+    couchrest_model (1.0.0.beta7)
+      activemodel (>= 3.0.0.beta4)
+      activesupport (>= 2.3.5)
+      couchrest (>= 1.0.0.beta)
+      mime-types (>= 1.15)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -50,6 +59,7 @@ GEM
     jammit (0.5.3)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
+    json (1.4.6)
     json_pure (1.4.6)
     mail (2.2.6.1)
       activesupport (>= 2.3.6)
@@ -76,6 +86,8 @@ GEM
       rake (>= 0.8.4)
       thor (~> 0.14.0)
     rake (0.8.7)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -89,7 +101,6 @@ GEM
     selenium-client (1.2.18)
     selenium-rc (2.2.4)
       selenium-client (>= 1.2.18)
-    sqlite3-ruby (1.2.4)
     thor (0.14.3)
     treetop (1.4.8)
       polyglot (>= 0.3.1)
@@ -100,7 +111,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  couchrest_model
   jammit
   jasmine!
   rails (= 3.0.0)
-  sqlite3-ruby

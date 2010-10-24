@@ -89,9 +89,14 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       var inputEl = this.$('input[type=text]');
       var description = inputEl.val();
       
-      taskStore.add({
-        description: description
+      var task = new Task({ 
+        description: description, 
+        boardName: this.model.get('boardName') 
       });
+      
+      taskStore.add(task);
+      
+      task.save();
       
       inputEl.val('');
     },
