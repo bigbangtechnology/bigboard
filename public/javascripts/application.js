@@ -2,7 +2,7 @@ $(document).ready(function(){
 	app.setup(window);
 	
 	//add the main view
-	$(document.body).html(appView.el);
+	$("div#content").html(appView.el);
 });
 
 var app = new BigBoard();

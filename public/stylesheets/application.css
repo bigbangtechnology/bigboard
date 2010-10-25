@@ -1,0 +1,55 @@
+/* Application Stylesheet */
+
+/* html elements
+------------------------------------------- */
+html {
+  font-size: 100%;
+}
+body {
+  background: #000;
+  color: #1a1a1a;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  line-height: 19px;
+  margin: 0 auto;
+  text-align: left;
+}
+p {
+  line-height: 18px;
+  margin-bottom: 16px;
+}
+
+/* content */
+#content {
+	background: #fff;
+	padding: 20px;
+}
+
+/* header */
+header {
+	background: #000;
+	color: #fffbde;
+	padding: 20px;
+}
+
+
+/* footer */
+footer {
+	background: #000;
+	color: #fffbde;
+	font-size: 12px;
+	padding: 20px;
+	text-align: right;
+}
+footer a {
+	color: inherit;
+	text-decoration: none;
+}
+footer a:hover {
+	color: #ff0000;
+}
+footer .app_name {
+	font-size: 16px;
+	font-weight: bold;
+}

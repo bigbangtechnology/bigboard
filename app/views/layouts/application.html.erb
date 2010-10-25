@@ -7,10 +7,21 @@
   <meta name="copyright" content="Big Bang Technology Inc." />
 
   <%= include_javascripts :core %>
+  <%= stylesheet_link_tag "reset", "application", :cache => "production.css" %>
 </head>
 <body>
 
-<%= yield %>
+  <header>
+    
+  </header>
 
+  <div id="content">
+    <%= yield %>
+  </div>
+
+  <footer>
+    <p class="wordmark"><span class="app_name">BigBoard</span> by <%= link_to "Big Bang Technology", "http://bigbangtechnology.com" %></p>
+  </footer>
+  
 </body>
 </html>
