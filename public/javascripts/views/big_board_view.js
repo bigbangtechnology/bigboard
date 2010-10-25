@@ -9,16 +9,14 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       board_selected: {
         before_transition: function() {
           taskStore = new TaskStore();
+          taskStore.board = this.model.get('boardName');
+          
           taskStoreView = new TaskStoreView({
             model: taskStore
           });
-
-          //add a fake task
-          taskStore.add([
-            { description: "A task" },
-            { description: "Another task" },
-            { description: "And yet another task" }
-          ]);
+          
+          //go get the initial tasks
+          taskStore.fetch();
         },
 
         after_transition: function() {
@@ -91,7 +89,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       
       var task = new Task({ 
         description: description, 
-        boardName: this.model.get('boardName') 
+        board: this.model.get('boardName') 
       });
       
       taskStore.add(task);

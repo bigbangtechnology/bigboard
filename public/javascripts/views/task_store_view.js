@@ -6,6 +6,7 @@ var TaskStoreView = Backbone.View.extend(function() {
     
     initialize: function() {
     	this.model.bind('add', _.bind(this.render, this));
+    	this.model.bind('refresh', _.bind(this.render, this));
     },
     
     render: function() {
@@ -22,7 +23,6 @@ var TaskStoreView = Backbone.View.extend(function() {
     
     template: function(json) {		
     	return JST['task_store_view'](json);
-    },
-    
-  }
+    }    
+  };
 }());

@@ -2,11 +2,11 @@ var TaskStore = Backbone.Collection.extend(function(){
   
   return {
     model: Task,
-    
+
     url: function() {
-      return COUCH_DB_URL;
+      return "/tasks.json?board=" + this.board;
     },
-    
+
     getTaskViews: function() {
       return this.map(function(task) {
         return new TaskView({
