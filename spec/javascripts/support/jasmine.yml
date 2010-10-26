@@ -15,6 +15,7 @@ src_files:
   - public/javascripts/vendor/underscore.js
   - public/javascripts/vendor/backbone.js
   - public/javascripts/vendor/stately.js
+  - public/javascripts/vendor/date.js
   - public/javascripts/views/**/*.js
   - public/javascripts/models/**/*.js
   - public/javascripts/application.js

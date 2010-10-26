@@ -1,10 +1,14 @@
 var BigBoardView = Backbone.View.extend(Stately).extend(function() {  
   //private
-  ENTER_KEY_CODE = 13;
-  
+  const ENTER_KEY_CODE = 13;
+
   var taskStore, taskStoreView;
   
   return {
+    getTaskStore: function() {
+      return taskStore;
+    },
+    
     transitions : {
       board_selected: {
         before_transition: function() {
@@ -89,8 +93,14 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       
       var task = new Task({ 
         description: description, 
-        board: this.model.get('boardName') 
+        board: this.model.get('boardName')
       });
+      
+      //get the previous day value
+      var lastTask = taskStore.last();
+      
+      // set the task day
+      task.setDayBasedOn(lastTask);
       
       taskStore.add(task);
       
