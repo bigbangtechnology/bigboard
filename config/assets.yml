@@ -10,5 +10,10 @@ javascripts:
         - public/javascripts/views/**/*.js
         - public/javascripts/models/**/*.js
         - public/javascripts/application.js
+        
+stylesheets:
+  core:
+    - public/stylesheets/reset.css
+    - public/stylesheets/application.css
 
 template_function: _.template
