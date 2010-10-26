@@ -53,3 +53,23 @@ footer .app_name {
 	font-size: 16px;
 	font-weight: bold;
 }
+
+#taskStoreView li {
+  color:#ffffff;
+  list-style: none;
+  font-size:18px;
+  padding:5px;
+  margin-bottom:1px;
+}
+
+.day1 {
+  background-color:#ff0000;
+}
+
+.day2 {
+  background-color:#00ff00;
+}
+
+.day3 {
+  background-color:#0000ff;
+}

@@ -10,7 +10,7 @@ var TaskView = Backbone.View.extend(function() {
     },
     
     render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
+      $(this.el).html(this.template(this.model.toJSON())).addClass("day" + this.model.get('day'));
       
       return this;
     },
@@ -18,5 +18,5 @@ var TaskView = Backbone.View.extend(function() {
     template: function(json) {		
     	return JST['task_view'](json);
     }    
-  }
+  };
 }());
