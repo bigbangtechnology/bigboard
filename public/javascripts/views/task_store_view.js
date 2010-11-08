@@ -1,8 +1,14 @@
-var TaskStoreView = Backbone.View.extend(function() {
-  var taskViews = [];  
+var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
+  var taskViews = [];
   
-  return {
+  return {    
     tagName: "ul",
+    
+    transitions : {
+      no_tasks: {},
+      tasks_loading: {},
+      tasks_loaded: {}
+    },    
     
     initialize: function() {
     	this.model.bind('add', _.bind(this.render, this));
