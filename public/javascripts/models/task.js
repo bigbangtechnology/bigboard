@@ -8,6 +8,10 @@ var Task = Backbone.Model.extend(function(){
       
       if (this.isNew()) {
         this.set({ status: "started" });
+      } else {
+        if (this.get('status') == undefined) {
+          this.set({ status: "started" });
+        }
       }
     },
     

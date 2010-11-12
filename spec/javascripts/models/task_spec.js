@@ -67,5 +67,13 @@ describe("Task", function() {
     
     expect(sut.id).toBe("123");
   });
+  
+  it("should load tasks even if the status is null from the server", function() {
+    sut = new Task({
+      _id: "123"
+    });
+    
+    expect(sut.get('status')).toBe("started");
+  });
 
 });
