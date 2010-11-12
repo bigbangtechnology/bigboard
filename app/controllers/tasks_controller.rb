@@ -1,6 +1,5 @@
 class TasksController < ApplicationController
   def index
-		sleep(2)
     render :json => { :models => Task.by_board({ :key => params[:board]}) }
   end
   
