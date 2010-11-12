@@ -5,7 +5,7 @@
 
 var Stately = function() {
   return {
-    VERSION: "0.0.2",
+    VERSION: "0.0.3",
     
     currentState: "",
     
@@ -13,9 +13,9 @@ var Stately = function() {
       
     },
 
-    // Revalidate state is a function that you call when you want to transition
-    // into a new state potentially. It takes a single callback function as argument
-    // which will execute once between the `before_transition` and `after_transition` functions
+    // Call this when you want to revalidate the state. It takes a single callback function 
+    // as argument which will execute once between the `before_transition` and 
+    // `after_transition` functions
     revalidateState: function(callback) {
       if (this.currentState) {
         $(this.el).removeClass(this.currentState);
@@ -30,7 +30,14 @@ var Stately = function() {
       $(this.el).addClass(this.currentState);
 
       this.executeTransition("before_transition");
-
+      
+      // if we're using simple mode where a transition is defined
+      // as a function, just execute it here
+      
+      if (this.transitions[this.currentState] instanceof Function) {
+        this.transitions[this.currentState].call(this);
+      }
+      
       if (callback instanceof Function) {
         callback.call(this);
       }
@@ -39,9 +46,9 @@ var Stately = function() {
     },
 
     // Executes a transition by name if it is defined in the View. 
-    // Stately will automatically execute the enter_state and render_state
-    // transitions if they are declared, custom transitions can be written
-    // by declaring them and then running executeTransition manually
+    // Stately will automatically execute the `before_transition` and `after_transition`
+    // if they are declared, custom transitions can be written by declaring them and then 
+    // running executeTransition manually
     executeTransition: function(transitionName) {
       if (this.hasTransition(transitionName)) {
         this.transitions[this.currentState][transitionName].call(this);
@@ -58,8 +65,8 @@ var Stately = function() {
       }
     },    
     
-    // Sub classes must override getState and return a string. getState is called
-    // automatically when executing revalidateState
+    // Sub classes must override `getState` and return a string. getState is called
+    // automatically when executing `revalidateState`
     getState: function() {
       // throws an error if this is not overwritten
       throw("Views must implement getState");

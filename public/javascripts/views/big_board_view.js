@@ -17,14 +17,24 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           
           taskStoreView = new TaskStoreView({
             model: taskStore
-          });
+          });          
           
           //go get the initial tasks
-          taskStore.fetch();
+          taskStore.loading = true;
+          
+          taskStore.fetch({
+            success:function(store) {
+              // let the view know that the model is finished loading 
+              store.loading = false;
+              store.trigger('loadingChange');
+            }
+          });
         },
 
         after_transition: function() {
           this.$('#taskStoreView').append(taskStoreView.el);
+          
+          taskStoreView.render();
         }          
       }
     },    

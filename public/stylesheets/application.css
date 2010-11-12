@@ -73,3 +73,13 @@ footer .app_name {
 .day3 {
   background-color:#0000ff;
 }
+
+.loading {
+  padding-top:1px;
+  padding-bottom:1px;
+  padding-right:5px;
+}
+
+#taskStoreView li.message {
+  color:#000000;
+}
