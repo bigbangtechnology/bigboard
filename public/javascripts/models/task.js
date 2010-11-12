@@ -46,17 +46,9 @@ var Task = Backbone.Model.extend(function(){
       newStatus = (currentStatus == "completed") ? "started" : "completed";
       
       this.set({ status: newStatus });
-      
-      console.log(this.url());
-      
-      // this.save();
-    },
-    
-    url: function() {
-      var base = getUrl(this.collection);
-      if (this.isNew()) return base;
-      return base + '/' + this.id;
-    },
+
+      this.save();
+    }
     
   };
 }());
