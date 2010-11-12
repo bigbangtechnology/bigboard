@@ -4,7 +4,7 @@ var TaskStore = Backbone.Collection.extend(function(){
     model: Task,
 
     url: function() {
-      return "/tasks.json?board=" + this.board;
+      return this.board + "/tasks";
     },
 
     getTaskViews: function() {

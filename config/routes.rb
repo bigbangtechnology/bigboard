@@ -1,5 +1,8 @@
 Bigboard::Application.routes.draw do  
-  resources :tasks, :only => [:index, :create]
+	scope("/:board/") do
+  	resources :tasks, :only => [:index, :create, :update]
+	end
+
   
 	root :to => "home#index"
 end

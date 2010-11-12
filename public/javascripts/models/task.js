@@ -2,6 +2,15 @@ var Task = Backbone.Model.extend(function(){
   const DAY_TOLERANCE = 3;
     
   return {
+    
+    initialize: function() {
+      this.id = this.get('_id');
+      
+      if (this.isNew()) {
+        this.set({ status: "started" });
+      }
+    },
+    
     createdAt: function() {   
       return Date.parse(this.get('created_at')).clearTime(); // we only care about whole days
     },
@@ -28,6 +37,26 @@ var Task = Backbone.Model.extend(function(){
       }
       
       this.set({ day: taskDay });
-    }
+    },
+    
+    toggleStatus: function() {
+      var currentStatus = this.get('status');
+      var newStatus;
+      
+      newStatus = (currentStatus == "completed") ? "started" : "completed";
+      
+      this.set({ status: newStatus });
+      
+      console.log(this.url());
+      
+      // this.save();
+    },
+    
+    url: function() {
+      var base = getUrl(this.collection);
+      if (this.isNew()) return base;
+      return base + '/' + this.id;
+    },
+    
   };
 }());

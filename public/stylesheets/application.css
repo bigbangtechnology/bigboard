@@ -62,6 +62,10 @@ footer .app_name {
   margin-bottom:1px;
 }
 
+#taskStoreView li.completed {
+  opacity: 0.15;
+}
+
 .day1 {
   background-color:#ff0000;
 }
