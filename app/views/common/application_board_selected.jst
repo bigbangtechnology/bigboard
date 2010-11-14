@@ -1,7 +1,14 @@
 <p>Hello <%= boardName %>!</p>
 
-<p><input type="text" /></p>
+<ul>
+	<li><a class="logout" href="Javascript:void(0)">Logout</a></li>
+	<li><a class="confirmButton clearCompleted" href="Javascript:void(0)">Clear Completed Tasks</a></li>
+</ul>
+
+<p>Add Task: <input type="text" /></p>
+
+<p class="clearingMessage">The following tasks will be removed. Click again to confirm.</p>
+	
 
 <div id="taskStoreView"></div>
 
-<p><a class="logout" href="Javascript:void(0)">Logout</a></p>

@@ -94,3 +94,19 @@ footer .app_name {
 #taskStoreView li.message {
   color:#000000;
 }
+
+.clearing .started {
+  display:none;
+}
+
+.clearingMessage {
+  display:none;
+}
+
+.clearing .clearingMessage {
+  display:block;
+}
+
+.cleared {
+  display:none;
+}
