@@ -6,7 +6,7 @@ html {
   font-size: 100%;
 }
 body {
-  background: #000;
+  background: #fff;
   color: #1a1a1a;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -30,6 +30,7 @@ p {
 header {
 	background: #000;
 	color: #fffbde;
+	display: block;
 	padding: 20px;
 }
 
@@ -37,10 +38,13 @@ header {
 /* footer */
 footer {
 	background: #000;
+	bottom: 0px;
 	color: #fffbde;
+	display: block;
 	font-size: 12px;
-	padding: 20px;
+	position: absolute;
 	text-align: right;
+	width: 100%;
 }
 footer a {
 	color: inherit;
@@ -48,6 +52,9 @@ footer a {
 }
 footer a:hover {
 	color: #ff0000;
+}
+footer p {
+	padding: 20px 20px 0px 20px;
 }
 footer .app_name {
 	font-size: 16px;
