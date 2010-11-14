@@ -13,6 +13,21 @@ var TaskStore = Backbone.Collection.extend(function(){
           model: task
         });
       });
+    },
+    
+    clearCompleted: function() {
+      var completedTasks = this.select(function(task) {
+        return (task.get('status') == "completed")
+      });
+      
+      _.each(completedTasks, function(task) {
+        task.set({ status: "cleared" });
+        task.save();        
+      });
+      
+      this.remove(completedTasks);
+      
+      
     }
   };
 }());

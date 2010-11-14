@@ -128,17 +128,19 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       inputEl.val('');
     },
     
-    clearCompletedListener: function() {
-      console.log("CLEAR COMPLETED LISTENER");
-    },    
-    
     clearCompletedConfirmListener: function() {
-      console.log("CLEAR COMPLETED CONFIRM LISTENER");
+      $(this.el).addClass("clearing");
     },
     
     clearCompletedCancelListener: function() {
-      console.log("CLEAR COMPLETED CANCEL LISTENER");
+      $(this.el).removeClass("clearing");
     },
+    
+    clearCompletedListener: function() {
+      $(this.el).removeClass("clearing");
+      // change all completed tasks to cleared
+      taskStore.clearCompleted();
+    },    
 
     log: function(str) {
     	console.log(str);
