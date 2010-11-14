@@ -6,6 +6,7 @@ javascripts:
         - public/javascripts/vendor/stately.js
         - public/javascripts/vendor/sync.js
         - public/javascripts/vendor/date.js
+        - public/javascripts/vendor/confirmButton.js
         - app/views/common/*.jst
         - public/javascripts/views/**/*.js
         - public/javascripts/models/**/*.js

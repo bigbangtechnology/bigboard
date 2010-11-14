@@ -47,7 +47,10 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     events: {
       "click .no_board_selected input[type=submit]" : "submitBoard",
       "click .logout" : "logout",
-      "keypress .board_selected input[type=text]" : "keyPressListener"
+      "keypress .board_selected input[type=text]" : "keyPressListener",
+      "click .clearCompleted" : "clearCompletedListener",
+      "confirm .clearCompleted" : "clearCompletedConfirmListener",
+      "cancelConfirm .clearCompleted" : "clearCompletedCancelListener"
     },
 	
     initialize: function() {
@@ -59,11 +62,17 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       
       this.revalidateState(function() {
         $(this.el).html(this.template(this.model.toJSON()));
-      });          
+      });
+      
+      this.processComponents();
     
       this.handleEvents();
     
       return this;
+    },
+    
+    processComponents: function() {
+      this.$('.confirmButton').confirmButton();
     },
     
     getState: function() {
@@ -117,6 +126,18 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       task.save();
       
       inputEl.val('');
+    },
+    
+    clearCompletedListener: function() {
+      console.log("CLEAR COMPLETED LISTENER");
+    },    
+    
+    clearCompletedConfirmListener: function() {
+      console.log("CLEAR COMPLETED CONFIRM LISTENER");
+    },
+    
+    clearCompletedCancelListener: function() {
+      console.log("CLEAR COMPLETED CANCEL LISTENER");
     },
 
     log: function(str) {
