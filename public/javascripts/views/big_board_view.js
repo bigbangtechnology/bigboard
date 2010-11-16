@@ -4,6 +4,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
 
   var taskStore, taskStoreView;
   
+  var taskStoreWatcher;
+  
   return {
     getTaskStore: function() {
       return taskStore;
@@ -35,9 +37,21 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           this.$('#taskStoreView').append(taskStoreView.el);
           
           taskStoreView.render();
+          
+          this.watchForUpdates();
         }          
       }
     },    
+    
+    watchForUpdates: function() {
+      setInterval(function() {
+       taskStoreWatcher = taskStore.fetch();
+      }, 1000);
+    },
+    
+    stopWatchingUpdates: function() {
+      clearInterval(taskStoreWatcher);
+    },
     
     states: {
       NO_BOARD_SELECTED: "no_board_selected",
@@ -98,6 +112,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     
     logout: function() {
       this.model.logout();
+      
+      this.stopWatchingUpdates();
     },
     
     keyPressListener: function(event) {
