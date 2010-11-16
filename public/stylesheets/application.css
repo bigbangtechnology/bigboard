@@ -42,7 +42,7 @@ footer {
 	color: #fffbde;
 	display: block;
 	font-size: 12px;
-	position: absolute;
+	position: fixed;
 	text-align: right;
 	width: 100%;
 }
