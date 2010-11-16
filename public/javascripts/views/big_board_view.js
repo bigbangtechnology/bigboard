@@ -46,7 +46,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     watchForUpdates: function() {
       setInterval(function() {
        taskStoreWatcher = taskStore.fetch();
-      }, 1000);
+      }, 5000);
     },
     
     stopWatchingUpdates: function() {
