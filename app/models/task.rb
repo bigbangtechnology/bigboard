@@ -8,11 +8,11 @@ class Task < CouchRest::Model::Base
   
   timestamps!
 
-  view_by :board, :descending => true, :map => "
+  view_by :board, :map => "
 		function(doc) {
-		  if ((doc['couchrest-type'] == 'Task') && (doc['board'] != null) && (doc['status'] != 'cleared')) {
-		    emit(doc['board'], null);
-		  }
+			if (doc['couchrest-type'] == 'Task' && doc.board != null && doc.status != 'cleared') {
+				emit([doc.board, doc.created_at], null)
+			}
 		}  
 	"
 
