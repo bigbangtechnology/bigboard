@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 			end
 		else
 			logger.info("SOMETHING WENT WRONG")
+			logger.info(task.inspect)
 		end
 	end
 end
