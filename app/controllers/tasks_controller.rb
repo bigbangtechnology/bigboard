@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    render :json => { :models => Task.by_board({ :endkey => [params[:board], "2010/01/01 00:00:00"]}) }
+    render :json => { :models => Task.board_index(params[:board]) }
   end
   
   def create
