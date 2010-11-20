@@ -22,6 +22,8 @@ class TasksController < ApplicationController
 			else
 				render :json => task.errors, :status => :bad_request
 			end
+		else
+			logger.info("SOMETHING WENT WRONG")
 		end
 	end
 end
