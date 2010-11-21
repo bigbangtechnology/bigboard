@@ -25,7 +25,10 @@ var BigBoard = Backbone.Model.extend(function(){
 		},
 		
 		processHash: function(boardNameWithHash) {
-			return boardNameWithHash.slice(1, boardNameWithHash.length);
+		  var boardNameWithoutHash = boardNameWithHash.slice(1, boardNameWithHash.length);
+		  var processedHash = boardNameWithoutHash.split(".").join("_");
+		  
+			return processedHash;
 		},
 		
 		setupEventListeners: function() {
