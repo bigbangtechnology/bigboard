@@ -23,7 +23,7 @@ p {
 /* content */
 #mainView {
   background: #fff;
-  padding-top:43px;
+  padding-top:40px;
   padding-bottom:75px;
 }
 
@@ -66,20 +66,7 @@ header a:link, header a:visited {
     height:0;
     visibility:hidden;
   }
-  
-  header ul.left-toolbar li {
-/*    float:left;*/
-/*    margin-right:10px;*/
-  }
-  
-/*  header ul.right-toolbar {
-    position:absolute;
-    right:5px;
-    top:5px;
-    width:60px;
-    z-index:2;
-  }  
-*/
+
 
 /* footer */
 footer {
@@ -153,17 +140,21 @@ footer .app_name {
 
 .rightToolbarButton a {
   display:block;
-  border-bottom:solid 1px #ffffff;
   padding-left:10px;  
 }
 
 .rightToolbarButton a:link, .rightToolbarButton a:visited {
   text-decoration:none;
-  background-color:#444444;
+  background-color:#000000;
 }
 
 .rightToolbarButton a:hover {
-  background-color:#d23a10;
+  text-decoration:underline;
+}
+
+
+.rightToolbarButton a.clearCompleted {
+  background-color:#ff0000;
 }
 
 #taskStoreView li.completed {
@@ -204,9 +195,18 @@ footer .app_name {
 }
 
 #taskStoreView li {
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.5s ease;  
+  -webkit-transition-property: height, opacity;
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease;
+
+  -moz-transition-property: height, opacity;
+  -moz-transition-duration: 0.5s;
+  -moz-transition-timing-function: ease;
+
+  -o-transition-property: height, opacity;
+  -o-transition-duration: 0.5s;
+  -o-transition-timing-function: ease;
+
   height:19px;
 }
 
@@ -219,15 +219,42 @@ footer .app_name {
   margin:0;
 }
 
+#mainView p.clearingMessage {
+/*  display:none;*/
 
+  height:0;
+  padding-top:0;
+  padding-bottom:0;
+  margin:0;
+  opacity:0;
+  border-bottom:solid 1px #ffffff;
+  background-color:#000000;
 
-.clearingMessage {
-  display:none;
-  border-bottom:solid 1px #efefef;
+  -webkit-transition-property: height, opacity, padding, background-color, color;
+  -webkit-transition-duration: 0.15s, 0.15s, 0.15s, 0.25s, 0.25s;
+  -webkit-transition-timing-function: linear;
+  
+  -moz-transition-property: height, opacity, padding, background-color, color;
+  -moz-transition-duration: 0.15s, 0.15s, 0.15s, 0.25s, 0.25s;
+  -moz-transition-timing-function: linear;
+
+  -o-transition-property: height, opacity, padding, background-color, color;
+  -o-transition-duration: 0.15s, 0.15s, 0.15s, 0.25s, 0.25s;
+  -o-transition-timing-function: linear;  
 }
 
-.clearing .clearingMessage {
-  display:block;
+.clearing #mainView p.clearingMessage {
+/*  display:block;*/
+
+  border-bottom:solid 1px #efefef;  
+  visibility:visible;
+  height:20px;
+  opacity:1;
+  padding:10px;
+  margin-bottom:1px;
+  background-color:#ff0000;
+  color:#fff;
+  
 }
 
 .cleared {
