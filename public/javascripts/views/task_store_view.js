@@ -55,8 +55,8 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
         
         $(this.el).append(newTask.el);
         
-        $.scrollTo('#tasksRemaining', 250, {
-          offset: { y : 20 }
+        $.scrollTo('#taskStoreView li:last', 250, {
+          offset: { y : 60 }
         });
         
         $(newTask.el).hide().slideDown(500);
