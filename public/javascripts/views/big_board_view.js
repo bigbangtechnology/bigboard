@@ -1,6 +1,6 @@
 var BigBoardView = Backbone.View.extend(Stately).extend(function() {  
   //private
-  const ENTER_KEY_CODE = 13;
+  var ENTER_KEY_CODE = 13;
 
   var taskStore, taskStoreView;
   
@@ -159,7 +159,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     },    
 
     log: function(str) {
-    	console.log(str);
+      if (window['console'])
+        console.log(str);
     }
   };	
 }());

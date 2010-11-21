@@ -36,7 +36,7 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     },
     
     render: function() {      
-      console.log("Rendering Task Store View");
+      this.log("Rendering Task Store View");
       
       $(this.el).empty();
       
@@ -53,6 +53,11 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
       } else  {
         return this.states.NORMAL;
       }
-    }    
+    },
+    
+    log: function(str) {
+      if (window['console'])
+        console.log(str);
+    } 
   };
 }());

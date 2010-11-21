@@ -45,7 +45,8 @@ var BigBoard = Backbone.Model.extend(function(){
 		},
 		
 		log: function(str) {
-			console.log(str);
+		  if (window['console'])
+			  console.log(str);
 		}
 	}
 }());

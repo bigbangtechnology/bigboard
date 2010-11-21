@@ -1,5 +1,5 @@
 var Task = Backbone.Model.extend(function(){
-  const DAY_TOLERANCE = 3;
+  var DAY_TOLERANCE = 3;
     
   return {
     
