@@ -38,7 +38,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           
           taskStoreView.render();
           
-          // this.watchForUpdates();
+          this.watchForUpdates();
         }          
       }
     },    
@@ -87,7 +87,6 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     
     processComponents: function() {
       this.$('.confirmButton').confirmButton();
-      this.$('.inputPrompt').inputPrompt();
     },
     
     getState: function() {

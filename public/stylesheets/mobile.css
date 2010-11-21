@@ -1,6 +1,7 @@
 @media only screen and (max-device-width: 480px) {
  header {
    position:static;
+   width:auto;
  }
 
  footer {

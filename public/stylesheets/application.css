@@ -35,13 +35,13 @@ p {
 
 /* header */
 header {
-	background: #000;
+  background: #000;
 	color: #ffffff;
 	display: block;
 	padding: 5px;
 	position:fixed;
-	width:100%;
-  min-width:320px;	
+  width:100%;
+/*  min-width:320px;  */
 	font-size: 14px;
 	height:30px;
 }
