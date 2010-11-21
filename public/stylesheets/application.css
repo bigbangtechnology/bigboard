@@ -180,3 +180,25 @@ footer .app_name {
 .cleared {
   display:none;
 }
+
+.no-board {
+  padding:20px;
+}
+
+.no-board p {
+  font-size:18px;  
+}
+
+.no-board input[type=text] {
+  width:200px;
+}
+
+.no-board input {
+  font-size:18px;
+}
+
+.no-board input[type=submit] {
+  position:relative;
+  bottom:2px;
+  left:5px;
+}
