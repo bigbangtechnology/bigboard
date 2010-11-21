@@ -78,6 +78,7 @@ footer {
 	position: fixed;
 	text-align: right;
 	width: 100%;
+	z-index:9999;
 }
 footer a {
 	color: inherit;
@@ -101,7 +102,7 @@ footer .app_name {
   margin-bottom:1px;
   border-bottom:solid 1px #efefef;
   position:relative;
-  z-index:9999;
+  z-index:9998;
 }
 
 #taskStoreView li:hover {
