@@ -17,7 +17,7 @@ class Task < CouchRest::Model::Base
 	"
 
 	def self.board_index board_name
-		self.by_board({ :startkey => [board_name, DateTime.now.to_s(:db) ], :endkey => [board_name, "2010/01/01 00:00:00"]})		
+		self.by_board({ :startkey => [board_name, "2009/01/01 00:00:00" ], :endkey => [board_name, DateTime.now.to_s(:couchdb)]})		
 	end
 
 end
