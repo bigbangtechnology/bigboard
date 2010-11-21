@@ -22,3 +22,29 @@
    right:0;
   }
 }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  #content {
+    min-height:955px;
+  }
+  
+  header {
+   position:static;
+   width:auto;
+  }
+
+  footer {
+   position:static;
+   height:50px;
+  } 
+
+  #mainView {
+   padding-bottom:0px;
+   padding-top:0;
+  }
+
+  .rightToolbarButton {
+   right:0;
+  }
+  
+}
