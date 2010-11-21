@@ -41,7 +41,7 @@ header {
 	padding: 5px;
 	position:fixed;
 	width:100%;
-  min-width:575px;	
+  min-width:320px;	
 	font-size: 14px;
 	height:30px;
 }
