@@ -26,8 +26,18 @@ var TaskStore = Backbone.Collection.extend(function(){
       });
       
       this.remove(completedTasks);
+    },
+    
+    taskToggled: function() {
+      this.trigger('taskToggled');
+    },
+    
+    numRemainingTasks: function() {
+      var startedTasks = this.select(function(task) {
+        return (task.get('status') == "started");
+      });
       
-      
+      return startedTasks.length;
     }
   };
 }());

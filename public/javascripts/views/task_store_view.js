@@ -18,7 +18,9 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
 
         _.each(this.taskViews, function(taskView) {
           $(this.el).append(taskView.el);
-        }, this);          
+        }, this);    
+        
+        this.createTasksRemaining();
       }
     },    
     
@@ -33,6 +35,7 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     	this.model.bind('remove', _.bind(this.render, this));
     	this.model.bind('refresh', _.bind(this.render, this));
     	this.model.bind('loadingChange', _.bind(this.render, this));
+    	this.model.bind('taskToggled', _.bind(this.updateTasksRemaining, this));
     },
     
     render: function() {      
@@ -40,7 +43,7 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
       
       $(this.el).empty();
       
-      this.revalidateState();      
+      this.revalidateState();
 
       return this;
     },
@@ -58,6 +61,26 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     log: function(str) {
       if (window['console'])
         console.log(str);
-    } 
+    },
+    
+    createTasksRemaining: function() {
+      $(this.el).append("<p id='tasksRemaining'><span class='numTasks'>0</span> <span class='tasksNoun'>Tasks</span> Remaining</p>");
+      
+      this.updateTasksRemaining();
+    },
+    
+    updateTasksRemaining: function() {
+      var tasksNoun = "";
+      var numTasks = this.model.numRemainingTasks();
+      
+      if (numTasks == 1) {
+        tasksNoun = "Task";
+      } else {
+        tasksNoun = "Tasks";
+      }
+      
+      this.$('.numTasks').html(numTasks);
+      this.$('.tasksNoun').html(tasksNoun);
+    }
   };
 }());

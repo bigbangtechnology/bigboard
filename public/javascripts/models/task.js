@@ -52,6 +52,7 @@ var Task = Backbone.Model.extend(function(){
       this.set({ status: newStatus });
 
       this.save();
+      this.collection.taskToggled();
     }
     
   };

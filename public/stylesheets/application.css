@@ -31,7 +31,6 @@ p {
     font-size:18px;
     padding:10px;
     margin-bottom:1px;
-    border-bottom:solid 1px #efefef;
   }
 
 /* header */
@@ -171,6 +170,7 @@ footer .app_name {
 
 .clearingMessage {
   display:none;
+  border-bottom:solid 1px #efefef;
 }
 
 .clearing .clearingMessage {
@@ -201,4 +201,14 @@ footer .app_name {
   position:relative;
   bottom:2px;
   left:5px;
+}
+
+.clearing #tasksRemaining {
+  display:none;
+}
+
+#tasksRemaining {
+  font-size:14px;
+  text-align:center;
+  color:#cccccc;
 }
