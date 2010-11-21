@@ -195,19 +195,19 @@ footer .app_name {
 }
 
 #taskStoreView li {
-  -webkit-transition-property: height, opacity;
+  -webkit-transition-property: min-height, opacity;
   -webkit-transition-duration: 0.5s;
   -webkit-transition-timing-function: ease;
 
-  -moz-transition-property: height, opacity;
+  -moz-transition-property: min-height, opacity;
   -moz-transition-duration: 0.5s;
   -moz-transition-timing-function: ease;
 
-  -o-transition-property: height, opacity;
+  -o-transition-property: min-height, opacity;
   -o-transition-duration: 0.5s;
   -o-transition-timing-function: ease;
 
-  height:19px;
+  min-height:20px;
 }
 
 .clearing #taskStoreView .started {
@@ -217,6 +217,7 @@ footer .app_name {
   padding-bottom:0;
   border:none;
   margin:0;
+  min-height:0;
 }
 
 #mainView p.clearingMessage {
@@ -291,4 +292,24 @@ footer .app_name {
   font-size:14px;
   text-align:center;
   color:#cccccc;
+}
+
+@media only screen and (max-device-width: 480px) {
+ header {
+   position:static;
+ }
+ 
+ footer {
+   position:static;
+   height:40px;
+ } 
+ 
+ #mainView {
+   padding-bottom:0px;
+   padding-top:0;
+ }
+ 
+ .rightToolbarButton {
+   right:0;
+ }
 }
