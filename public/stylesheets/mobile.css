@@ -1,20 +1,24 @@
 @media only screen and (max-device-width: 480px) {
- header {
+  #content {
+    min-height:420px;
+  }
+  
+  header {
    position:static;
    width:auto;
- }
+  }
 
- footer {
+  footer {
    position:static;
    height:40px;
- } 
+  } 
 
- #mainView {
+  #mainView {
    padding-bottom:0px;
    padding-top:0;
- }
+  }
 
- .rightToolbarButton {
+  .rightToolbarButton {
    right:0;
- }
+  }
 }
