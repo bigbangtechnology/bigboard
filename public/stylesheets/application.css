@@ -8,7 +8,7 @@ html {
 body {
   background: #fff;
   color: #1a1a1a;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 12px;
   height: 100%;
   line-height: 19px;
@@ -21,26 +21,71 @@ p {
 }
 
 /* content */
-#content {
-	background: #fff;
-	padding: 20px;
-	padding-bottom:80px;
+#mainView {
+  background: #fff;
+  padding-top:43px;
+  padding-bottom:45px;
 }
+
+  #mainView p {
+    font-size:18px;
+    padding:10px;
+    margin-bottom:1px;
+    border-bottom:solid 1px #efefef;
+  }
 
 /* header */
 header {
 	background: #000;
-	color: #fffbde;
+	color: #ffffff;
 	display: block;
-	padding: 20px;
+	padding: 5px;
+	position:fixed;
+	width:100%;
+  min-width:650px;	
+	font-size: 14px;
 }
+
+header a:link, header a:visited {
+  color:#ffffff;
+}
+
+  header ul {
+    list-style-type:none;
+  }
+  
+  header ul li {
+    display:block;
+    line-height:31px;
+  }
+  
+  header ul:after {
+    content:".";
+    clear:both;
+    display:block;
+    height:0;
+    visibility:hidden;
+  }
+  
+  header ul.left-toolbar li {
+    float:left;
+    margin-right:10px;
+  }
+  
+  header ul.right-toolbar {
+    position:absolute;
+    right:5px;
+    top:5px;
+    width:60px;
+    z-index:2;
+  }  
 
 
 /* footer */
 footer {
 	background: #000;
 	bottom: 0px;
-	color: #fffbde;
+	color: #ffffff;
 	display: block;
 	font-size: 12px;
 	position: fixed;
@@ -55,7 +100,7 @@ footer a:hover {
 	color: #ff0000;
 }
 footer p {
-	padding: 20px 20px 0px 20px;
+	padding: 10px 10px 0px 0px;
 }
 footer .app_name {
 	font-size: 16px;
@@ -63,28 +108,52 @@ footer .app_name {
 }
 
 #taskStoreView li {
-  color:#ffffff;
   list-style: none;
   font-size:18px;
-  padding:5px;
+  padding:10px;
   margin-bottom:1px;
+  border-bottom:solid 1px #efefef;
+}
+
+.addTask input {
+  font-size:18px;
+  width:400px;
+}
+
+.addTask label {
+  position:absolute;
+  color:#cccccc;
+  font-size:18px;
+  top:5px;
+  left:11px;
 }
 
 #taskStoreView li.completed {
-  opacity: 0.15;
+/*  opacity: 0.15;*/
+  text-decoration:line-through;
 }
 
 .day1 {
-  background-color:#ff0000;
+  color:#d23a10;
+}
+
+.day1.completed {
+  color:#e89c87;  
 }
 
 .day2 {
-  background-color:#00ff00;
+  color:#96c992;
 }
+  .day2.completed {
+    color:#cae4c8;
+  }
 
 .day3 {
-  background-color:#0000ff;
+  color:#108bd2;
 }
+  .day3.completed {
+    color:#87c5e8;
+  }
 
 .loading {
   padding-top:1px;
