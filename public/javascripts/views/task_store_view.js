@@ -31,7 +31,8 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     },
     
     initialize: function() {
-    	this.model.bind('add', _.bind(this.render, this));
+      // this.model.bind('add', _.bind(this.render, this));
+    	this.model.bind('add', _.bind(this.renderNew, this));
     	this.model.bind('remove', _.bind(this.render, this));
     	this.model.bind('refresh', _.bind(this.render, this));
     	this.model.bind('loadingChange', _.bind(this.render, this));
@@ -46,6 +47,24 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
       this.revalidateState();
 
       return this;
+    },
+    
+    renderNew: function() {
+      if (this.getState() == this.currentState) {
+        var newTask = this.model.getLatestTaskView();
+        
+        $(this.el).append(newTask.el);
+        
+        $.scrollTo('#tasksRemaining', 250, {
+          offset: { y : 20 }
+        });
+        
+        $(newTask.el).hide().slideDown(500);
+        
+        this.updateTasksRemaining();        
+      } else {
+        this.render();
+      }
     },
     
     getState: function() {
@@ -64,7 +83,9 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     },
     
     createTasksRemaining: function() {
-      $(this.el).append("<p id='tasksRemaining'><span class='numTasks'>0</span> <span class='tasksNoun'>Tasks</span> Remaining</p>");
+      $('#tasksRemaining').remove();
+      
+      $(this.el).after("<p id='tasksRemaining'><span class='numTasks'>0</span> <span class='tasksNoun'>Tasks</span> Remaining</p>");        
       
       this.updateTasksRemaining();
     },
@@ -79,8 +100,8 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
         tasksNoun = "Tasks";
       }
       
-      this.$('.numTasks').html(numTasks);
-      this.$('.tasksNoun').html(tasksNoun);
+      $('.numTasks').html(numTasks);
+      $('.tasksNoun').html(tasksNoun);
     }
   };
 }());

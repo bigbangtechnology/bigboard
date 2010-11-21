@@ -38,7 +38,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           
           taskStoreView.render();
           
-          this.watchForUpdates();
+          // this.watchForUpdates();
         }          
       }
     },    

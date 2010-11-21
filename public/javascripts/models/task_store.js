@@ -15,6 +15,12 @@ var TaskStore = Backbone.Collection.extend(function(){
       });
     },
     
+    getLatestTaskView: function() {
+      return new TaskView({
+        model: this.last()
+      });
+    },
+    
     clearCompleted: function() {
       var completedTasks = this.select(function(task) {
         return (task.get('status') == "completed")
