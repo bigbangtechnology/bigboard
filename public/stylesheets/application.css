@@ -172,25 +172,25 @@ footer .app_name {
 }
 
 .day1 {
-  color:#d23a10;
+  color:#ff0000;
 }
 
 .day1.completed {
-  color:#e89c87;  
+  color:#f79879;  
 }
 
 .day2 {
-  color:#96c992;
+  color:#0fc900;
 }
   .day2.completed {
-    color:#cae4c8;
+    color:#a7d59b;
   }
 
 .day3 {
-  color:#108bd2;
+  color:#2586c8;
 }
   .day3.completed {
-    color:#87c5e8;
+    color:#97b7e0;
   }
 
 .loading {
@@ -203,9 +203,23 @@ footer .app_name {
   color:#000000;
 }
 
-.clearing .started {
-  display:none !important; /*IMPORTANT since we override animation inline styles*/
+#taskStoreView .started {
+  height:19px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.5s ease;  
 }
+
+.clearing #taskStoreView .started {
+  height:0;
+  opacity:0;
+  padding-top:0;
+  padding-bottom:0;
+  border:none;
+  margin:0;
+}
+
+
 
 .clearingMessage {
   display:none;

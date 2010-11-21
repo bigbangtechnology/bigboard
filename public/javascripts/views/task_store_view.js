@@ -59,7 +59,7 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
           offset: { y : 60 }
         });
         
-        $(newTask.el).hide().slideDown(500);
+        $(newTask.el).hide().fadeIn(250);
         
         this.updateTasksRemaining();        
       } else {
