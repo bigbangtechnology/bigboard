@@ -44,6 +44,7 @@ header {
 /*  min-width:320px;  */
 	font-size: 14px;
 	height:30px;
+	z-index:9999;	
 }
 
 header a:link, header a:visited {
