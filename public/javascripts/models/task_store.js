@@ -44,6 +44,19 @@ var TaskStore = Backbone.Collection.extend(function(){
       });
       
       return startedTasks.length;
+    },
+    
+    updateTask: function(task) {      
+      this.findById(task._id).set(task);
+    },
+    
+    //internal get function doesn't work on tasks which 
+    //aren't loaded with an id since _byId hash hasn't
+    //had a chance to register the id
+    findById: function(id) {
+      return this.find(function(task) {
+        return task.id == id;
+      });
     }
   };
 }());

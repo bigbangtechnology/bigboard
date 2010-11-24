@@ -31,7 +31,6 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     },
     
     initialize: function() {
-      // this.model.bind('add', _.bind(this.render, this));
     	this.model.bind('add', _.bind(this.renderNew, this));
     	this.model.bind('remove', _.bind(this.render, this));
     	this.model.bind('refresh', _.bind(this.render, this));

@@ -13,6 +13,10 @@ var Task = Backbone.Model.extend(function(){
           this.set({ status: "started" });
         }
       }
+      
+      this.bind('change', function() {
+        this.id = this.get('_id');
+      });
     },
     
     createdAt: function() {   

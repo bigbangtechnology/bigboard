@@ -6,6 +6,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
   
   var taskStoreWatcher;
   
+  var socket;
+  
   return {
     getTaskStore: function() {
       return taskStore;
@@ -38,19 +40,31 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           
           taskStoreView.render();
           
-          this.watchForUpdates();
+          this.connect();
         }          
       }
     },    
     
-    watchForUpdates: function() {
-      setInterval(function() {
-       taskStoreWatcher = taskStore.fetch();
-      }, 5000);
+    connect: function() {
+      socket.subscribe(this.model.get('boardName'));
+  	  socket.bind('task-create', _.bind(this.taskCreatedEventListener, this));	
+  	  socket.bind('task-update', _.bind(this.taskUpdatedEventListener, this));
+  	  socket.bind('pusher:connection_established', function(evt) {
+        GLOBAL_SOCKET_ID = evt.socket_id;
+  	  });
     },
     
-    stopWatchingUpdates: function() {
-      clearInterval(taskStoreWatcher);
+    taskCreatedEventListener: function(task) {
+      taskStore.add(new Task(task));
+    },
+    
+    taskUpdatedEventListener: function(task) {
+      taskStore.updateTask(task)
+    },
+    
+    disconnect: function() {
+      socket.unsubscribe(this.model.get('boardName'));
+      socket.disconnect();
     },
     
     states: {
@@ -69,6 +83,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
 	
     initialize: function() {
     	this.model.bind('change', _.bind(this.render, this));
+      socket = new Pusher('d63e6e0bfa04a9adb62a');
     },
 
     render: function() {
@@ -113,7 +128,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     logout: function() {
       this.model.logout();
       
-      this.stopWatchingUpdates();
+      this.disconnect();
     },
     
     keyPressListener: function(event) {
