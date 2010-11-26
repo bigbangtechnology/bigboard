@@ -4,7 +4,6 @@ javascripts:
         - public/javascripts/vendor/underscore.js
         - public/javascripts/vendor/backbone.js
         - public/javascripts/vendor/stately.js
-        - public/javascripts/vendor/sync.js
         - public/javascripts/vendor/date.js
         - public/javascripts/vendor/plugins/*.js
         - app/views/common/*.jst
