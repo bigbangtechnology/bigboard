@@ -57,7 +57,15 @@ var Task = Backbone.Model.extend(function(){
 
       this.save();
       this.collection.taskToggled();
-    }
+    },
     
+    toJSONParam: function() {
+      var param = { 
+        model : this.toJSON(),
+        socket_id: GLOBAL_SOCKET_ID
+      }
+      
+      return param;
+    }    
   };
 }());

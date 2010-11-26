@@ -9,3 +9,5 @@ var app = new BigBoard();
 var appView = new BigBoardView({
 	model: app
 });
+
+Backbone.emulateHTTP = true;

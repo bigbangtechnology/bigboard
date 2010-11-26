@@ -25,7 +25,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
           
           //go get the initial tasks
           taskStore.loading = true;
-          
+
           taskStore.fetch({
             success:function(store) {
               // let the view know that the model is finished loading 
@@ -95,8 +95,6 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       
       this.processComponents();
     
-      this.handleEvents();
-    
       return this;
     },
     
@@ -106,9 +104,9 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     
     getState: function() {
       var boardName = this.model.get('boardName');
-      var state;
+      var state;    
       
-      if (boardName == undefined || boardName == null) {
+      if (boardName == undefined || boardName == null || boardName == "") {
         return this.states.NO_BOARD_SELECTED;        
       } else {
         return this.states.BOARD_SELECTED;
@@ -140,7 +138,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     createTask: function() {
       var inputEl = this.$('input[type=text]');
       var description = inputEl.val();
-      
+
       var task = new Task({ 
         description: description, 
         board: this.model.get('boardName')

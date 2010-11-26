@@ -6,7 +6,7 @@ Pusher.secret = '1e36be2e9291b2aa0dd4'
 
 class TasksController < ApplicationController
   def index
-    render :json => { :models => Task.board_index(params[:board]) }
+    render :json => Task.board_index(params[:board])
   end
   
   def create
@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     if task.save			
 			Pusher[params[:board]].trigger('task-create', task.as_json, params[:socket_id])
 			
-      render :json => { :model => task }
+      render :json => task
     else
       render :json => task.errors, :status => :bad_request
     end

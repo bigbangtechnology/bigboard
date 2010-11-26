@@ -24,8 +24,6 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
         $(this.el).html(this.template(this.model.toJSON())).addClass("day" + this.model.get('day'));        
       });
       
-      this.handleEvents();
-      
       return this;
     },
     
