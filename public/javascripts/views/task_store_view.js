@@ -27,7 +27,8 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     states: {
       NO_ITEMS: "no_items",
       LOADING: "loading",
-      NORMAL: "normal"
+      NORMAL: "normal",
+      EDITABLE: "editable"
     },
     
     initialize: function() {
@@ -36,6 +37,7 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     	this.model.bind('refresh', _.bind(this.render, this));
     	this.model.bind('loadingChange', _.bind(this.render, this));
     	this.model.bind('taskToggled', _.bind(this.updateTasksRemaining, this));
+    	this.model.bind('editableChange', _.bind(this.editableChangeListener, this));
     },
     
     render: function() {      
@@ -101,6 +103,10 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
       
       $('.numTasks').html(numTasks);
       $('.tasksNoun').html(tasksNoun);
+    },
+    
+    editableChangeListener: function() {            
+      $(this.el).toggleClass(this.states.EDITABLE);
     }
   };
 }());
