@@ -49,6 +49,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       socket.subscribe(this.model.get('boardName'));
   	  socket.bind('task-create', _.bind(this.taskCreatedEventListener, this));	
   	  socket.bind('task-update', _.bind(this.taskUpdatedEventListener, this));
+  	  socket.bind('task-destroy', _.bind(this.taskDestroyedEventListener, this));
   	  socket.bind('pusher:connection_established', function(evt) {
         GLOBAL_SOCKET_ID = evt.socket_id;
   	  });
@@ -60,6 +61,11 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     
     taskUpdatedEventListener: function(task) {
       taskStore.updateTask(task)
+    },
+    
+    taskDestroyedEventListener: function(task) {
+      console.log("SOMEONE DESTROYED!");
+      taskStore.removeTask(task);
     },
     
     disconnect: function() {
@@ -78,7 +84,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       "keypress .board_selected input[type=text]" : "keyPressListener",
       "click .clearCompleted" : "clearCompletedListener",
       "confirm .clearCompleted" : "clearCompletedConfirmListener",
-      "cancelConfirm .clearCompleted" : "clearCompletedCancelListener"
+      "cancelConfirm .clearCompleted" : "clearCompletedCancelListener",
+      "click #editTasks" : "editTasksClickListener"
     },
 	
     initialize: function() {
@@ -99,7 +106,12 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     },
     
     processComponents: function() {
-      this.$('.confirmButton').confirmButton();
+      this.$('.confirmButton').confirmButton({
+        showEffect: 'slideDown',
+        hideEffect: 'slideUp'
+      });
+      
+      this.$('.toggleDoneButton').toggleDoneButton();
     },
     
     getState: function() {
@@ -170,6 +182,10 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       // change all completed tasks to cleared
       taskStore.clearCompleted();
     },    
+    
+    editTasksClickListener: function() {
+      taskStore.toggleEditMode();
+    },
 
     log: function(str) {
       if (window['console'])

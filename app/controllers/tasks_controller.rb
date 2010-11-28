@@ -38,4 +38,16 @@ class TasksController < ApplicationController
 			logger.info(task.inspect)
 		end
 	end
+	
+	def destroy
+		task = Task.find(params[:id])
+		
+		if (task.board == params[:board])
+			task.destroy
+			
+			Pusher[params[:board]].trigger('task-destroy', task.as_json, params[:socket_id])
+			
+			render :json => task
+		end
+	end
 end

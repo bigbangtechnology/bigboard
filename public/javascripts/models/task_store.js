@@ -50,6 +50,12 @@ var TaskStore = Backbone.Collection.extend(function(){
       this.findById(task._id).set(task);
     },
     
+    removeTask: function(task) {
+      var task = this.findById(task._id);
+      
+      this.remove(task);
+    },
+    
     //internal get function doesn't work on tasks which 
     //aren't loaded with an id since _byId hash hasn't
     //had a chance to register the id
@@ -57,6 +63,10 @@ var TaskStore = Backbone.Collection.extend(function(){
       return this.find(function(task) {
         return task.id == id;
       });
+    },
+    
+    toggleEditMode: function() {
+      this.trigger('editableChange');
     }
   };
 }());

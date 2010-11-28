@@ -110,6 +110,21 @@ footer .app_name {
   background-color:#fffbde;
 }
 
+#taskStoreView li .description {
+  display:block;
+}
+
+.controls {
+  display:none;
+}
+
+.editable .controls {
+  display:inline;
+  position:absolute;
+  right:10px;
+  top:10px;
+}
+
 .addTask {
   position:absolute;
   left:5px;

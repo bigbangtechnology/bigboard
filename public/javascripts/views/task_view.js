@@ -9,7 +9,8 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
     },
     
     events: {
-      "click" : "toggleStatus",
+      "click .description" : "toggleStatus",
+      "click .deleteTask" : "deleteTaskListener"
     },
     
     initialize: function() {
@@ -24,7 +25,17 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
         $(this.el).html(this.template(this.model.toJSON())).addClass("day" + this.model.get('day'));        
       });
       
+      this.processComponents();      
+      this.delegateEvents();
+      
       return this;
+    },
+        
+    processComponents: function() {
+      this.$('.confirmButton').confirmButton({
+        showEffect: 'fadeIn',
+        hideEffect: 'fadeOut'
+      });
     },
     
     getState: function() {
@@ -37,6 +48,10 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
     
     toggleStatus: function() {
       this.model.toggleStatus();
-    }
+    },
+    
+    deleteTaskListener: function() {
+      this.model.destroy();      
+    } 
   };
 }());

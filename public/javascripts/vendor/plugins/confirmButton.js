@@ -1,5 +1,5 @@
 (function( $ ){
-  $.fn.confirmButton = function() {
+  $.fn.confirmButton = function(options) {  
   this.each(function() {
     var confirmed = false;
     
@@ -17,7 +17,11 @@
 
     function showConfirmation(link) {
       $(link).before("<a href='Javascript:void(0)'>Cancel</a> ");
-      $(link).prev('a').hide().slideDown(150);
+      
+      if (options.showEffect) {
+        $(link).prev('a').hide()[options.showEffect](150);
+      }      
+      
       $(link).prev('a').click(function() {
         hideConfirmation(link);        
         $(link).trigger('cancelConfirm');
@@ -26,9 +30,13 @@
     } 
 
     function hideConfirmation(link) {
-      $(link).prev('a').slideUp(150, function() {
+      if (options.hideEffect) {
+        $(link).prev('a')[options.hideEffect](150, function() {
+          $(link).prev('a').remove();          
+        });
+      } else {
         $(link).prev('a').remove();
-      });
+      }
     }
   });
   };

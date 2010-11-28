@@ -1,6 +1,6 @@
 Bigboard::Application.routes.draw do  
 	scope("/:board/") do
-  	resources :tasks, :only => [:index, :create, :update]
+  	resources :tasks, :only => [:index, :create, :update, :destroy]
 	end
 
   
