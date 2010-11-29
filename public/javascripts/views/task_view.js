@@ -62,7 +62,7 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
     swipedTaskListener: function() {
       if (!this.controlsVisible) {
         $(this.el).addClass('editable');
-        this.controlsVisible = true;        
+        this.controlsVisible = true;  
         $(document).bind('touchstart', _.bind(this.swipedTaskCancelListener, this));
       } else {
         $(this.el).removeClass('editable');
