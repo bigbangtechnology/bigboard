@@ -64,7 +64,6 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     },
     
     taskDestroyedEventListener: function(task) {
-      console.log("SOMEONE DESTROYED!");
       taskStore.removeTask(task);
     },
     
@@ -84,8 +83,7 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       "keypress .board_selected input[type=text]" : "keyPressListener",
       "click .clearCompleted" : "clearCompletedListener",
       "confirm .clearCompleted" : "clearCompletedConfirmListener",
-      "cancelConfirm .clearCompleted" : "clearCompletedCancelListener",
-      "click #editTasks" : "editTasksClickListener"
+      "cancelConfirm .clearCompleted" : "clearCompletedCancelListener"
     },
 	
     initialize: function() {
@@ -110,8 +108,6 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
         showEffect: 'slideDown',
         hideEffect: 'slideUp'
       });
-      
-      this.$('.toggleDoneButton').toggleDoneButton();
     },
     
     getState: function() {
@@ -183,10 +179,6 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       taskStore.clearCompleted();
     },    
     
-    editTasksClickListener: function() {
-      taskStore.toggleEditMode();
-    },
-
     log: function(str) {
       if (window['console'])
         console.log(str);

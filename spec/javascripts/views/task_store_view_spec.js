@@ -24,13 +24,4 @@ describe("Task Store View", function() {
     expect(sut.getState()).toBe(sut.states.NORMAL);
   });
   
-  it("should render the editable class when the model dispatches the editableChange event", function() {
-    expect( $(sut.el).hasClass(sut.states.EDITABLE)).toBe(false);
-    
-    model.trigger('editableChange');
-    
-    expect( $(sut.el).hasClass(sut.states.EDITABLE)).toBeTruthy();
-  });
-  
-  
 });

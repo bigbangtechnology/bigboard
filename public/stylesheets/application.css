@@ -114,15 +114,20 @@ footer .app_name {
   display:block;
 }
 
-.controls {
-  display:none;
+/* show controls on hover for browsers with drag and drop AKA mouse */
+.no-touch #taskStoreView li:hover .controls {
+  visibility:visible;
 }
 
-.editable .controls {
-  display:inline;
+.controls {
+  visibility:hidden;
   position:absolute;
   right:10px;
   top:10px;
+}
+
+.editable .controls {
+  visibility:visible;
 }
 
 .addTask {

@@ -1,5 +1,6 @@
 javascripts:
     core:
+        - public/javascripts/vendor/modernizr.js
         - public/javascripts/vendor/jquery.js
         - public/javascripts/vendor/underscore.js
         - public/javascripts/vendor/backbone.js

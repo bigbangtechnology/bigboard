@@ -1,6 +1,8 @@
 var TaskView = Backbone.View.extend(Stately).extend(function() {
   
   return {
+    controlsVisible: false,
+    
     tagName: "li",
     
     states: {
@@ -28,6 +30,8 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
       this.processComponents();      
       this.delegateEvents();
       
+      $(this.el).swipe({ swipeRight: _.bind(this.swipedTaskListener, this) });      
+      
       return this;
     },
         
@@ -51,7 +55,26 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
     },
     
     deleteTaskListener: function() {
-      this.model.destroy();      
-    } 
+      this.model.destroy();
+      this.model.collection.remove(this.model);
+    },
+    
+    swipedTaskListener: function() {
+      if (!this.controlsVisible) {
+        $(this.el).addClass('editable');
+        this.controlsVisible = true;        
+        $(document).bind('touchstart', _.bind(this.swipedTaskCancelListener, this));
+      } else {
+        $(this.el).removeClass('editable');
+        this.controlsVisible = false;
+        $(document).unbind('touchstart');
+      }
+    },
+    
+    swipedTaskCancelListener: function(event) {
+      if ($(event.target).parent('.controls').length == 0) {
+        this.swipedTaskListener();
+      }          
+    }
   };
 }());

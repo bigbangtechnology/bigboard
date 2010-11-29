@@ -43,9 +43,9 @@ class TasksController < ApplicationController
 		task = Task.find(params[:id])
 		
 		if (task.board == params[:board])
-			task.destroy
-			
 			Pusher[params[:board]].trigger('task-destroy', task.as_json, params[:socket_id])
+			
+			task.destroy
 			
 			render :json => task
 		end

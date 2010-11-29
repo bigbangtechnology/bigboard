@@ -48,12 +48,13 @@ var TaskStore = Backbone.Collection.extend(function(){
     
     updateTask: function(task) {      
       this.findById(task._id).set(task);
+      this.trigger('taskToggled');
     },
     
     removeTask: function(task) {
       var task = this.findById(task._id);
-      
       this.remove(task);
+      this.trigger('taskToggled');
     },
     
     //internal get function doesn't work on tasks which 
@@ -63,10 +64,6 @@ var TaskStore = Backbone.Collection.extend(function(){
       return this.find(function(task) {
         return task.id == id;
       });
-    },
-    
-    toggleEditMode: function() {
-      this.trigger('editableChange');
     }
   };
 }());
