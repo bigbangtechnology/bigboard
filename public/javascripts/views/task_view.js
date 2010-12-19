@@ -36,10 +36,7 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
     },
         
     processComponents: function() {
-      this.$('.confirmButton').confirmButton({
-        showEffect: 'fadeIn',
-        hideEffect: 'fadeOut'
-      });
+      this.$('.confirmButton').confirmButton();
     },
     
     getState: function() {

@@ -125,6 +125,30 @@ footer .app_name {
   right:10px;
   top:10px;
 }
+.controls .cancelButton {
+	background: url("/images/cancelButton.png") no-repeat center;
+	display: none;
+	float: right;
+	height: 20px;
+	width: 25px;
+}
+.controls .confirmButton {
+	background: url("/images/confirmButton.png") no-repeat center;
+	display: inline-block;
+	height: 20px;
+	text-indent: -9999em;
+	width: 25px;
+}
+.controls .confirmButton.ready {
+	background-image: url("/images/confirmButton-ready.png");
+}
+.controls a:hover {
+	opacity: 0.75;
+}
+.controls a span {
+	display: none;
+}
+
 
 .editable .controls {
   visibility:visible;
