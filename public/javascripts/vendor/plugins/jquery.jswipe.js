@@ -19,7 +19,7 @@
 		// Default thresholds & swipe functions
 		var defaults = {
 			threshold: {
-				x: 150,
+				x: 30,
 				y: 10
 			},
 			swipeLeft: function() {},
