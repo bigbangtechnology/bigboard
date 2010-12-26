@@ -106,7 +106,7 @@ footer .app_name {
   z-index:9998;
 }
 
-#taskStoreView li:hover {
+.no-touch #taskStoreView li:hover {
   background-color:#fffbde;
 }
 
