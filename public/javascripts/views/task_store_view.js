@@ -50,15 +50,18 @@ var TaskStoreView = Backbone.View.extend(Stately).extend(function() {
     
     renderNew: function() {
       if (this.getState() == this.currentState) {
-        var newTask = this.model.getLatestTaskView();
+        var newTaskView = this.model.getLatestTaskView();
         
-        $(this.el).append(newTask.el);
+        $(this.el).append(newTaskView.el);
+
+        // if the user themselves added the task
+        if (newTaskView.model.userAdded) {
+          $.scrollTo('#taskStoreView li:last', 250, {
+            offset: { y : 60 }
+          });
+        }
         
-        $.scrollTo('#taskStoreView li:last', 250, {
-          offset: { y : 60 }
-        });
-        
-        $(newTask.el).hide().fadeIn(250);
+        $(newTaskView.el).hide().fadeIn(250);
         
         this.updateTasksRemaining();        
       } else {

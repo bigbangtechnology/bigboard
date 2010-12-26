@@ -165,6 +165,10 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
         board: this.model.get('boardName')
       });
       
+      // this user has added the task themselves
+      // used to determine if the task store should scroll
+      task.userAdded = true;
+      
       //get the previous day value
       var lastTask = taskStore.last();
       
