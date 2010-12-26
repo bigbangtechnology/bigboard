@@ -31,7 +31,7 @@ var TaskView = Backbone.View.extend(Stately).extend(function() {
       this.delegateEvents();
       
       $(this.el).swipe({ 
-        swipeRight: _.bind(this.swipedTaskListener, this) 
+        swipeRight: _.bind(this.swipedTaskListener, this),
         swipeLeft:  _.bind(this.swipedTaskListener, this)
       });
       
