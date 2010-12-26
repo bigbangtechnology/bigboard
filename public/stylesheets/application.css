@@ -342,3 +342,22 @@ footer .app_name {
   color:#cccccc;
 }
 
+#required-features {
+  list-style-type: square;
+  padding-left:20px;
+  margin-bottom:18px;
+  font-size:18px;
+}
+
+#required-features li {
+  display:none;
+}
+
+.no-websockets #sockets-feature {
+  display:block;  
+}
+
+.browser_incompatible {
+  padding:10px;
+  font-size:14px;
+}

@@ -74,7 +74,8 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
     
     states: {
       NO_BOARD_SELECTED: "no_board_selected",
-      BOARD_SELECTED: "board_selected"
+      BOARD_SELECTED: "board_selected",
+      BROWSER_INCOMPATIBLE: "browser_incompatible"
     },
   
     events: {
@@ -114,12 +115,24 @@ var BigBoardView = Backbone.View.extend(Stately).extend(function() {
       var boardName = this.model.get('boardName');
       var state;    
       
+      if (!this.browserCompatible())
+        return this.states.BROWSER_INCOMPATIBLE;      
+      
       if (boardName == undefined || boardName == null || boardName == "") {
         return this.states.NO_BOARD_SELECTED;        
       } else {
         return this.states.BOARD_SELECTED;
       }
       
+    },
+    
+    browserCompatible: function () {
+      var compatible = true;
+      
+      if (!Modernizr.websockets)
+          compatible = false;
+          
+      return compatible;
     },
 
     template: function(json) {		
